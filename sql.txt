@@ -1,0 +1,99 @@
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS Brand;
+DROP TABLE IF EXISTS Country;
+
+CREATE TABLE Brand
+(
+    id SERIAL primary key,
+    name TEXT
+);
+
+INSERT INTO Brand(name) VALUES
+('Nike'),
+('Adidas'),
+('Reebok');
+
+
+CREATE TABLE Country
+(
+    id  SERIAL primary key,
+    name TEXT
+);
+
+INSERT INTO Country(name) VALUES
+('Germany'),
+('Italy'),
+('America'),
+('China'),
+('Portugal');
+
+
+CREATE TABLE Product
+(
+    id SERIAL primary key,
+    type TEXT,
+    brand int references Brand(id),
+    country int references Country(id),
+    price INT,
+    amount INT
+);
+
+INSERT INTO Product(type, brand, country, price, amount) VALUES
+('Худи', 1,1 ,4000, 20),
+('Спортивные костюмы', 2, 2 ,6000, 43),
+('Шорты', 3, 3 ,3000, 12),
+('Футболка', 2, 4 ,3500, 32),
+('Куртки', 3,5 , 4500, 18),
+('Брюки', 2,2 , 5500, 24),
+('Поло', 1,3 , 5000, 33),
+('Рюкзаки', 2,4 , 3200, 21),
+('Кроссовки', 1,2 , 6200, 32),
+('Леггинсы',1,3,7800,23),
+('Одежда для плавания',2,4,7234,56),
+('Компрессионная одежда',3,3,2312,3),
+('Комбинезоны',2,5,4532,31),
+('Нижнее бельё',1,2,6700,26),
+('Бейсболка',2,1,6800,27),
+('Жилеты',3,2,6900,28),
+('Майки',2,4,7000,29),
+('Тренинги',3,2,5677,32),
+('Кроссфит',1,3,3211,3),
+('Сумки через плечо',2,4,7500,65),
+('Шорты для тренировок',3,2,8000,23),
+('Ветровки',2,3,9000,25),
+('Повседневные шорты',3,1,9000,26),
+('Спортивные сумки',1,5,10000,2),
+('Сумка для обуви',2,1,3667,29),
+('Топы',1,4,7822,23),
+('Капри',2,3,3123,5),
+('Панама',3,1,5674,8),
+('Бомберы',1,5,6553,30),
+('Тайтсы',2,4,6532,2),
+('Сумки на пояс',2,4,3123,6),
+('Анораки',1,5,1231,43),
+('Бтылки для воды',2,2,4341,54),
+('Термобельё',1,3,1231,4);
+
+
+CREATE TABLE Customer 
+(
+    id SERIAL primary key,
+    firstname TEXT,
+    surname TEXT,
+    phone BIGINT,
+    city TEXT,
+    street TEXT
+);
+
+
+INSERT INTO Customer(firstname, surname, phone, city, street ) VALUES 
+( 'Максим', 'Сибиряков', 89374447872,'Москва','Ульяновская'),
+( 'Кирилл','Долганов', 89348343433,'Казань','Петербургская'),
+( 'Максим','Чэн',89347658954,'Саратов','Хвалынская');
+
+
+SELECT * FROM Product ;
+SELECT * FROM Brand;
+SELECT * FROM Country ;
+SELECT * FROM Customer;
